@@ -1,8 +1,6 @@
 import uuidv4 from 'uuid/v4'
 
-let recipes = [{
-    ingridients: []
-}]
+let recipes = []
 
 // Read existing recipes from localStorage
 const loadRecipes = () => {
@@ -30,5 +28,23 @@ const createRecipes = () => {
     recipes.push({
         id: id,
         title: '',
+        ingridients: []
     })
+    saveRecipes()
+
+    return id
 }
+
+// Remove a recipe 
+const removeRecipe = (id) => {
+    const recipeIndex = recipes.findIndex((recipe) =>recipe.id === id)
+
+    if (recipeIndex > -1) {
+        recipes.splice(recipeIndex, 1)
+        saveRecipes()
+    }
+}
+
+recipes = loadRecipes()
+
+export { loadRecipes, saveRecipes, getRecipes, createRecipes, removeRecipe }
