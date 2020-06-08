@@ -1,5 +1,5 @@
 const generateRecipeDom = (recipe) => {
-    const noteEl = document.createAttribute('a')
+    const recipeEl = document.createAttribute('a')
     const textEl = document.createElement('p')
 
     if (recipe.title.length > 0) {
@@ -7,7 +7,25 @@ const generateRecipeDom = (recipe) => {
     } else {
         textEl.textContent = 'Unamed recipe'
     }
-    noteEl.appendChild(textEl)
+    recipeEl.appendChild(textEl)
 
-    return noteEl
+    return recipeEl
+}
+
+const renderRecipes = () => {
+    const recipesEl = document.querySelector('#recipes')
+    const recipes = recipes.title
+
+    recipesEl.innerHTML = ''
+
+    if (recipes.length > 0) {
+        recipes.forEach((recipe) => {
+            const recipeEl = generateRecipeDom(recipe)
+            recipesEl.appendChild(recipeEl)
+        })
+    } else {
+        const emptyMessage = document.createElement('p')
+        emptyMessage.textContent = 'No recipes to show'
+        recipesEl.appendChild(emptyMessage)
+    }
 }
