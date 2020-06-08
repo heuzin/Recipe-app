@@ -1,8 +1,9 @@
 import { renderRecipes } from "./views";
 import { createRecipes } from "./recipes";
 
-renderRecipes()
+// renderRecipes()
 
 document.querySelector('#create-recipe-button').addEventListener('click', (e) => {
-    createRecipes()
+    const id = createRecipes()
+    location.assign(`/edit.html${id}`)
 })

@@ -1,3 +1,5 @@
+import { getRecipes } from "./recipes"
+
 const generateRecipeDom = (recipe) => {
     const recipeEl = document.createAttribute('a')
     const textEl = document.createElement('p')
@@ -30,4 +32,16 @@ const renderRecipes = () => {
     }
 }
 
-export { generateRecipeDom, renderRecipes }
+const initializeEditPage = (recipeId) => {
+    const titleElement = document.querySelector('#note-title')
+    const recipes = getRecipes()
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
+
+    if (!recipe) {
+        location.assign('/index.html')
+    }
+
+    titleElement.value = recipe.title
+}
+
+export { generateRecipeDom, renderRecipes, initializeEditPage }
