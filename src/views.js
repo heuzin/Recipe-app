@@ -29,3 +29,5 @@ const renderRecipes = () => {
         recipesEl.appendChild(emptyMessage)
     }
 }
+
+export { generateRecipeDom, renderRecipes }
