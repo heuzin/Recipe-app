@@ -5,5 +5,5 @@ import { createRecipes } from "./recipes";
 
 document.querySelector('#create-recipe-button').addEventListener('click', (e) => {
     const id = createRecipes()
-    location.assign(`/edit.html${id}`)
+    location.assign(`/edit.html#${id}`)
 })
