@@ -59,4 +59,4 @@ const updateRecipe = (id, updates) => {
 
 recipes = loadRecipes()
 
-export { loadRecipes, saveRecipes, getRecipes, createRecipes, removeRecipe }
+export { loadRecipes, saveRecipes, getRecipes, createRecipes, removeRecipe, updateRecipe }
