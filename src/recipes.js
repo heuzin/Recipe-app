@@ -45,6 +45,18 @@ const removeRecipe = (id) => {
     }
 }
 
+const updateRecipe = (id, updates) => {
+    const recipe = recipes.find((recipe) => recipe.id === id)
+
+    if (!recipe) {
+        return
+    }
+
+    if (typeof updates.title === 'string') [
+        recipe.title = updates.title
+    ]
+}
+
 recipes = loadRecipes()
 
 export { loadRecipes, saveRecipes, getRecipes, createRecipes, removeRecipe }
