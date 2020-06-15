@@ -28,6 +28,7 @@ const createRecipes = () => {
     recipes.push({
         id: id,
         title: '',
+        steps: '',
         ingridients: []
     })
     saveRecipes()
