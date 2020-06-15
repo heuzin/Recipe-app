@@ -1,5 +1,6 @@
 import { initializeEditPage } from "./views"
 import { updateRecipe, removeRecipe } from "./recipes"
+import { createSteps } from './steps'
 
 const titleElement = document.querySelector('#note-title')
 const removeElement = document.querySelector('#remove-recipe')
@@ -21,7 +22,7 @@ removeElement.addEventListener('click', (e) => {
 
 addStepsElement.addEventListener('click', (e) => {
     const id = createSteps()
-    location.assign(`/steps.html`)
+    location.assign(`/steps.html${id}`)
 })
 
 window.addEventListener('storage', (e) => {
