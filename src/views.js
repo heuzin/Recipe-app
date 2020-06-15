@@ -2,7 +2,7 @@ import { getRecipes } from "./recipes"
 import { getFilters } from "./filters"
 
 const generateRecipeDom = (recipe) => {
-    const recipeEl = document.createAttribute('a')
+    const recipeEl = document.createElement('a')
     const textEl = document.createElement('p')
 
     if (recipe.title.length > 0) {
