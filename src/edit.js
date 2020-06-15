@@ -11,3 +11,9 @@ titleElement.addEventListener('input', (e) => {
         title: e.target.value
     })
 })
+
+window.addEventListener('storage', (e) => {
+    if (e.key === 'recipes') {
+        initializeEditPage(recipeId)
+    }
+})

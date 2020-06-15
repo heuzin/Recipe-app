@@ -15,3 +15,9 @@ document.querySelector('#search-text').addEventListener('input', (e) => {
     })
     renderRecipes()
 })
+
+window.addEventListener('storage', (e) => {
+    if (e.key === 'recipes') {
+        renderRecipes()
+    }
+})
