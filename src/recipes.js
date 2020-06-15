@@ -16,7 +16,7 @@ const loadRecipes = () => {
 
 // Save recipes to localStorage
 const saveRecipes = () => {
-    localStorage.getItem('recipes', JSON.stringify(recipes))
+    localStorage.setItem('recipes', JSON.stringify(recipes))
 }
 
 // Expose recipes from module
@@ -55,6 +55,9 @@ const updateRecipe = (id, updates) => {
     if (typeof updates.title === 'string') [
         recipe.title = updates.title
     ]
+
+    saveRecipes()
+    return recipe
 }
 
 recipes = loadRecipes()
