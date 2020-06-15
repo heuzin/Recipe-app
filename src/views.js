@@ -1,4 +1,5 @@
 import { getRecipes } from "./recipes"
+import { getFilters } from "./filters"
 
 const generateRecipeDom = (recipe) => {
     const recipeEl = document.createAttribute('a')
@@ -16,12 +17,14 @@ const generateRecipeDom = (recipe) => {
 
 const renderRecipes = () => {
     const recipesEl = document.querySelector('#recipes')
-    const recipes = recipes.title
+    const filters = getFilters()
+    const recipes = getRecipes()
+    const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
 
     recipesEl.innerHTML = ''
 
-    if (recipes.length > 0) {
-        recipes.forEach((recipe) => {
+    if (filteredRecipes.length > 0) {
+        filteredRecipes.forEach((recipe) => {
             const recipeEl = generateRecipeDom(recipe)
             recipesEl.appendChild(recipeEl)
         })
