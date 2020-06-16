@@ -1,4 +1,4 @@
-import { initializeEditPage } from "./views"
+import { initializeEditPage, renderSteps } from "./views"
 import { updateRecipe, removeRecipe } from "./recipes"
 import { createSteps } from './steps'
 
@@ -6,6 +6,7 @@ const titleElement = document.querySelector('#note-title')
 const removeElement = document.querySelector('#remove-recipe')
 const addStepsElement = document.querySelector('#add-steps')
 const recipeId = location.hash.substring(1)
+
 
 initializeEditPage(recipeId)
 
@@ -21,8 +22,8 @@ removeElement.addEventListener('click', (e) => {
 })
 
 addStepsElement.addEventListener('click', (e) => {
-    const id = createSteps()
-    location.assign(`/steps.html${id}`)
+    const id = createSteps(recipeId)
+    location.assign(`/steps.html#${id}`)
 })
 
 window.addEventListener('storage', (e) => {

@@ -1,12 +1,15 @@
 import { getRecipes } from "./recipes"
 import { getFilters } from "./filters"
+import { getSteps } from "./steps"
 
 const generateRecipeDom = (recipe) => {
     const recipeEl = document.createElement('a')
+    const stepsEl = document.createElement('TEXTAREA')
     const textEl = document.createElement('p')
 
     if (recipe.title.length > 0) {
         textEl.textContent = recipe.title
+        stepsEl.textContent = recipe.steps
     } else {
         textEl.textContent = 'Unamed recipe'
     }
@@ -19,6 +22,9 @@ const generateRecipeDom = (recipe) => {
 
 const renderRecipes = () => {
     const recipesEl = document.querySelector('#recipes')
+    const stepsEl = document.querySelector('#steps')
+
+
     const filters = getFilters()
     const recipes = getRecipes()
     const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
@@ -37,6 +43,26 @@ const renderRecipes = () => {
     }
 }
 
+const renderSteps = () => {
+    const stepsEl = document.querySelector('#steps')
+    const steps = getRecipes()
+
+    stepsEl.innerHTML = ''
+
+    if (steps.length > 0) {
+        steps.forEach((step) => {
+            const stepEl = document.createElement('a')
+            stepEl.textContent = `Step: ${step}`
+            stepsEl.appendChild(stepEl)
+        })
+    } else {
+        const emptyMessage = document.createElement('p')
+        emptyMessage.textContent = 'No step to show'
+        stepsEl.appendChild(emptyMessage)
+    }
+
+}
+
 const initializeEditPage = (recipeId) => {
     const titleElement = document.querySelector('#note-title')
     const recipes = getRecipes()
@@ -47,6 +73,10 @@ const initializeEditPage = (recipeId) => {
     }
 
     titleElement.value = recipe.title
+}
+
+const initializePostPage = (postId) => {
+    
 }
 
 export { generateRecipeDom, renderRecipes, initializeEditPage }

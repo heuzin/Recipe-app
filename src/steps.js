@@ -5,7 +5,7 @@ const recipes = getRecipes()
 let steps = recipes.steps
 
 const loadSteps = () => {
-    const stepsJSON = localStorage.getItem('steps')
+    const stepsJSON = localStorage.getItem('recipes')
 
     try {
         return stepsJSON != null ? JSON.parse(stepsJSON) : []
@@ -15,17 +15,19 @@ const loadSteps = () => {
 }
 
 const saveSteps = () => {
-    localStorage.setItem('steps', JSON.stringify(steps))
+    localStorage.setItem('recipes', JSON.stringify(recipes))
 }
 
 const getSteps = () => steps
 
-const createSteps = () => {
+const createSteps = (recipeId) => {
+    const recipe = recipes.filter((recipe) => recipe.id === recipeId)
     const id = uuidv4()
 
-    steps.push({
+    console.log(recipe)
+    recipe[0].steps.push({
         id: id,
-        steps: []
+        steps: ''
     })
     saveSteps()
 
