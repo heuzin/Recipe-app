@@ -1,19 +1,7 @@
-import uuidv4 from 'uuid/v4'
-import { getRecipes, saveRecipes } from './recipes'
+const stepElement = document.querySelector('#recipe-steps')
 
-const recipes = getRecipes()
-
-const createSteps = (recipeId) => {
-    const recipe = recipes.filter((recipe) => recipe.id === recipeId)
-    const id = uuidv4()
-
-    recipe[0].steps.push({
-        id: id,
-        steps: ''
+stepElement.addEventListener('input', (e) => {
+    const recipe = updateRecipe(recipeId, {
+        steps: e.target.value
     })
-    saveRecipes()
-
-    return id
-}
-
-export { createSteps }
+})

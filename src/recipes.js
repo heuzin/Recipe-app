@@ -36,6 +36,20 @@ const createRecipes = () => {
     return id
 }
 
+const createSteps = (recipeId) => {
+    const recipes = getRecipes()
+    const recipe = recipes.filter((recipe) => recipe.id === recipeId)
+    const id = uuidv4()
+
+    recipe[0].steps.push({
+        id: id,
+        steps: ''
+    })
+    saveRecipes()
+
+    return id
+}
+
 // Remove a recipe 
 const removeRecipe = (id) => {
     const recipeIndex = recipes.findIndex((recipe) =>recipe.id === id)
@@ -63,4 +77,4 @@ const updateRecipe = (id, updates) => {
 
 recipes = loadRecipes()
 
-export { loadRecipes, saveRecipes, getRecipes, createRecipes, removeRecipe, updateRecipe }
+export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, removeRecipe, updateRecipe }

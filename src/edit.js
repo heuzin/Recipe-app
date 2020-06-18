@@ -1,8 +1,7 @@
 import { initializeEditPage, renderSteps } from "./views"
-import { updateRecipe, removeRecipe } from "./recipes"
-import { createSteps } from './steps'
+import { updateRecipe, removeRecipe, createSteps } from "./recipes"
 
-// renderSteps()
+renderSteps()
 
 const titleElement = document.querySelector('#note-title')
 const removeElement = document.querySelector('#remove-recipe')

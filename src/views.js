@@ -41,26 +41,26 @@ const renderRecipes = () => {
     }
 }
 
-// const renderSteps = (recipeId) => {
-//     const stepsEl = document.querySelector('#steps')
-//     const recipes = getRecipes()
-//     const recipe = recipes.filter((recipe) => recipe.steps === recipeId)
+const renderSteps = (recipeId) => {
+    const stepsEl = document.querySelector('#steps')
 
-//     stepsEl.innerHTML = ''
+    const recipes = getRecipes()
+    const recipe = recipes.filter((recipe) => recipe.id === recipeId)
 
-//     if (recipe.length > 0) {
-//         recipe.steps.forEach((step) => {
-//             const stepEl = document.createElement('a')
-//             stepEl.textContent = `Step: ${step}`
-//             stepsEl.appendChild(stepEl)
-//         })
-//     } else {
-//         const emptyMessage = document.createElement('p')
-//         emptyMessage.textContent = 'No step to show'
-//         stepsEl.appendChild(emptyMessage)
-//     }
+    stepsEl.innerHTML = ''
 
-// }
+    if (recipe.length > 0) {
+        recipe.steps.forEach((step) => {
+            const stepEl = document.createElement('a')
+            stepEl.textContent = `Step: ${step}`
+            stepsEl.appendChild(stepEl)
+        })
+    } else {
+        const emptyMessage = document.createElement('p')
+        emptyMessage.textContent = 'No step to show'
+        stepsEl.appendChild(emptyMessage)
+    }
+}
 
 const initializeEditPage = (recipeId) => {
     const titleElement = document.querySelector('#note-title')
@@ -78,4 +78,4 @@ const initializePostPage = (postId) => {
     
 }
 
-export { generateRecipeDom, renderRecipes, initializeEditPage }
+export { generateRecipeDom, renderRecipes, initializeEditPage, renderSteps }
