@@ -8,7 +8,6 @@ const removeElement = document.querySelector('#remove-recipe')
 const addStepsElement = document.querySelector('#add-steps')
 const recipeId = location.hash.substring(1)
 
-
 initializeEditPage(recipeId)
 
 titleElement.addEventListener('input', (e) => {
@@ -23,8 +22,8 @@ removeElement.addEventListener('click', (e) => {
 })
 
 addStepsElement.addEventListener('click', (e) => {
-    const id = createSteps(recipeId)
-    location.assign(`/steps.html#${id}`)
+    const stepId = createSteps(recipeId)
+    location.assign(`/steps.html#${recipeId}?${stepId}`)
 })
 
 window.addEventListener('storage', (e) => {

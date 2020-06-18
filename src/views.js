@@ -1,6 +1,5 @@
 import { getRecipes } from "./recipes"
 import { getFilters } from "./filters"
-import { getSteps } from "./steps"
 
 const generateRecipeDom = (recipe) => {
     const recipeEl = document.createElement('a')

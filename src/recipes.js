@@ -2,6 +2,7 @@ import uuidv4 from 'uuid/v4'
 
 let recipes = []
 
+
 // Read existing recipes from localStorage
 const loadRecipes = () => {
     // Check for existing saved data READ - CHEACK - PARSE
@@ -67,14 +68,21 @@ const updateRecipe = (id, updates) => {
         return
     }
 
-    if (typeof updates.title === 'string') [
+    if (typeof updates.title === 'string') {
         recipe.title = updates.title
-    ]
+    }
 
     saveRecipes()
     return recipe
 }
 
+const updateSteps = (recipeId, stepId, description) => {
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
+    let step = recipe.steps.find((step) => step.id === stepId)
+    step.steps = description
+    saveRecipes()
+}
+
 recipes = loadRecipes()
 
-export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, removeRecipe, updateRecipe }
+export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, removeRecipe, updateRecipe, updateSteps }

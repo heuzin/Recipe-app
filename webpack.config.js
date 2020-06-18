@@ -3,7 +3,8 @@ const path = require('path')
 module.exports = {
     entry: {
         index: ['babel-polyfill', './src/index.js'],
-        edit: ['babel-polyfill', './src/edit.js']
+        edit: ['babel-polyfill', './src/edit.js'],
+        steps: ['babel-polyfill', './src/steps.js'],
     },
     output: {
         path: path.resolve(__dirname, 'public/scripts'),
