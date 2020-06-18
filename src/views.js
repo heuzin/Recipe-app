@@ -22,8 +22,6 @@ const generateRecipeDom = (recipe) => {
 
 const renderRecipes = () => {
     const recipesEl = document.querySelector('#recipes')
-    const stepsEl = document.querySelector('#steps')
-
 
     const filters = getFilters()
     const recipes = getRecipes()
@@ -43,25 +41,26 @@ const renderRecipes = () => {
     }
 }
 
-const renderSteps = () => {
-    const stepsEl = document.querySelector('#steps')
-    const steps = getRecipes()
+// const renderSteps = (recipeId) => {
+//     const stepsEl = document.querySelector('#steps')
+//     const recipes = getRecipes()
+//     const recipe = recipes.filter((recipe) => recipe.steps === recipeId)
 
-    stepsEl.innerHTML = ''
+//     stepsEl.innerHTML = ''
 
-    if (steps.length > 0) {
-        steps.forEach((step) => {
-            const stepEl = document.createElement('a')
-            stepEl.textContent = `Step: ${step}`
-            stepsEl.appendChild(stepEl)
-        })
-    } else {
-        const emptyMessage = document.createElement('p')
-        emptyMessage.textContent = 'No step to show'
-        stepsEl.appendChild(emptyMessage)
-    }
+//     if (recipe.length > 0) {
+//         recipe.steps.forEach((step) => {
+//             const stepEl = document.createElement('a')
+//             stepEl.textContent = `Step: ${step}`
+//             stepsEl.appendChild(stepEl)
+//         })
+//     } else {
+//         const emptyMessage = document.createElement('p')
+//         emptyMessage.textContent = 'No step to show'
+//         stepsEl.appendChild(emptyMessage)
+//     }
 
-}
+// }
 
 const initializeEditPage = (recipeId) => {
     const titleElement = document.querySelector('#note-title')

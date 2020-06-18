@@ -2,6 +2,8 @@ import { initializeEditPage, renderSteps } from "./views"
 import { updateRecipe, removeRecipe } from "./recipes"
 import { createSteps } from './steps'
 
+// renderSteps()
+
 const titleElement = document.querySelector('#note-title')
 const removeElement = document.querySelector('#remove-recipe')
 const addStepsElement = document.querySelector('#add-steps')
