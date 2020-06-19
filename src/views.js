@@ -40,15 +40,18 @@ const renderRecipes = () => {
     }
 }
 
-const renderSteps = (recipeId) => {
+const renderSteps = () => {
     const stepsEl = document.querySelector('#steps')
 
+    const recipeId = location.hash.substring(1)
+
     const recipes = getRecipes()
-    const recipe = recipes.filter((recipe) => recipe.id === recipeId)
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
+    // let step = recipe.steps.find((step) => step.id === stepId)
 
     stepsEl.innerHTML = ''
 
-    if (recipe.length > 0) {
+    if (recipe.steps.length > 0) {
         recipe.steps.forEach((step) => {
             const stepEl = document.createElement('a')
             stepEl.textContent = `Step: ${step}`

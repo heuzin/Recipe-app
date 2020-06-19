@@ -1,4 +1,4 @@
-import { updateRecipe, updateSteps, getRecipes, saveRecipes } from './recipes'
+import { updateSteps } from './recipes'
 
 const stepElement = document.querySelector('#recipe-steps')
 
