@@ -3,12 +3,10 @@ import { getFilters } from "./filters"
 
 const generateRecipeDom = (recipe) => {
     const recipeEl = document.createElement('a')
-    const stepsEl = document.createElement('TEXTAREA')
     const textEl = document.createElement('p')
 
     if (recipe.title.length > 0) {
         textEl.textContent = recipe.title
-        stepsEl.textContent = recipe.steps
     } else {
         textEl.textContent = 'Unamed recipe'
     }
@@ -42,20 +40,22 @@ const renderRecipes = () => {
 
 const renderSteps = () => {
     const stepsEl = document.querySelector('#steps')
-
+    
     const recipeId = location.hash.substring(1)
-
+    
     const recipes = getRecipes()
     const recipe = recipes.find((recipe) => recipe.id === recipeId)
-    // let step = recipe.steps.find((step) => step.id === stepId)
-
+    
     stepsEl.innerHTML = ''
-
+    let count = 1
+    
     if (recipe.steps.length > 0) {
-        recipe.steps.forEach((step) => {
+        recipe.steps.forEach((step) => {        
             const stepEl = document.createElement('a')
-            stepEl.textContent = `Step: ${step}`
+            stepEl.textContent = `Step ${count}: ${step.description} `
             stepsEl.appendChild(stepEl)
+            stepEl.setAttribute('href', `/steps.html#${step.id}`)
+            count++
         })
     } else {
         const emptyMessage = document.createElement('p')
