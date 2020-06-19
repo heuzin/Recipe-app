@@ -41,8 +41,10 @@ const renderRecipes = () => {
 const renderSteps = () => {
     const stepsEl = document.querySelector('#steps')
     
-    const recipeId = location.hash.substring(1)
-    
+    const ids = location.hash.substring(1).split('?')
+    const recipeId =ids[0]
+    const stepId = ids[1]
+  
     const recipes = getRecipes()
     const recipe = recipes.find((recipe) => recipe.id === recipeId)
     
@@ -54,7 +56,7 @@ const renderSteps = () => {
             const stepEl = document.createElement('a')
             stepEl.textContent = `Step ${count}: ${step.description} `
             stepsEl.appendChild(stepEl)
-            stepEl.setAttribute('href', `/steps.html#${step.id}`)
+            stepEl.setAttribute('href', `/steps.html#${recipeId}?${step.id}`)
             count++
         })
     } else {
@@ -76,8 +78,18 @@ const initializeEditPage = (recipeId) => {
     titleElement.value = recipe.title
 }
 
-const initializePostPage = (postId) => {
-    
+const initializePostPage = () => {
+    const stepElement = document.querySelector('#recipe-steps')
+
+    const ids = location.hash.substring(1).split('?')
+    const recipeId =ids[0]
+    const stepId = ids[1]
+
+    const recipes = getRecipes()
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
+    let step = recipe.steps.find((step) => step.id === stepId)
+
+    stepElement.value = step.description
 }
 
-export { generateRecipeDom, renderRecipes, initializeEditPage, renderSteps }
+export { generateRecipeDom, renderRecipes, initializeEditPage, initializePostPage, renderSteps }

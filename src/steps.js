@@ -1,4 +1,7 @@
 import { updateSteps } from './recipes'
+import { initializePostPage } from './views'
+
+initializePostPage()
 
 const stepElement = document.querySelector('#recipe-steps')
 
