@@ -44,7 +44,7 @@ const createSteps = (recipeId) => {
 
     recipe[0].steps.push({
         id: id,
-        steps: ''
+        description: ''
     })
     saveRecipes()
 
@@ -79,7 +79,7 @@ const updateRecipe = (id, updates) => {
 const updateSteps = (recipeId, stepId, description) => {
     const recipe = recipes.find((recipe) => recipe.id === recipeId)
     let step = recipe.steps.find((step) => step.id === stepId)
-    step.steps = description
+    step.description = description
     saveRecipes()
 }
 
