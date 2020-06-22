@@ -61,6 +61,22 @@ const removeRecipe = (id) => {
     }
 }
 
+const removeStep = (recipeId ,stepId) => {
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
+    let step = recipe.steps.find((step) => step.id === stepId)
+    const stepIndex = recipe.steps.findIndex((step) => step.id === stepId)
+
+    console.log(stepId)
+    console.log(step)
+    console.log(stepIndex)
+
+
+    if (stepIndex > -1) {
+        recipe.steps.splice(stepIndex, 1)
+        saveRecipes()
+    }
+}
+
 const updateRecipe = (id, updates) => {
     const recipe = recipes.find((recipe) => recipe.id === id)
 
@@ -85,4 +101,4 @@ const updateSteps = (recipeId, stepId, description) => {
 
 recipes = loadRecipes()
 
-export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, removeRecipe, updateRecipe, updateSteps }
+export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, removeRecipe, removeStep, updateRecipe, updateSteps }
