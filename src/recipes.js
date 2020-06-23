@@ -32,7 +32,7 @@ const createRecipes = (e) => {
         id: id,
         title: titleElemnt.elements['recipe-title'].value,
         steps: [],
-        ingridients: []
+        ingredients: []
     })
     saveRecipes()
 
@@ -55,14 +55,14 @@ const createSteps = (recipeId) => {
     return id
 }
 
-const createIngridient = (recipeId) => {
+const createIngredient = (recipeId) => {
     const recipes = getRecipes()
     const recipe = recipes.filter((recipe) => recipe.id === recipeId)
     const id = uuidv4()
 
-    recipe[0].ingridients.push({
+    recipe[0].ingredients.push({
         id: id,
-        ingridientName: ''
+        ingredientName: ''
     })
     saveRecipes()
 
@@ -114,4 +114,4 @@ const updateSteps = (recipeId, stepId, description) => {
 
 recipes = loadRecipes()
 
-export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, createIngridient, removeRecipe, removeStep, updateRecipe, updateSteps }
+export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, createIngredient, removeRecipe, removeStep, updateRecipe, updateSteps }
