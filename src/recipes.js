@@ -25,6 +25,7 @@ const getRecipes = () => recipes
 
 const createRecipes = (e) => {
     const id = uuidv4()
+
     const titleElemnt = document.querySelector('#add-recipe-from')
 
     recipes.push({
@@ -43,9 +44,11 @@ const createSteps = (recipeId) => {
     const recipe = recipes.filter((recipe) => recipe.id === recipeId)
     const id = uuidv4()
 
+    const descriptionElement = document.querySelector('#create-step-form')
+
     recipe[0].steps.push({
         id: id,
-        description: ''
+        description: descriptionElement.elements['create-recipe-steps'].value
     })
     saveRecipes()
 

@@ -5,7 +5,8 @@ module.exports = {
         index: ['babel-polyfill', './src/index.js'],
         edit: ['babel-polyfill', './src/edit.js'],
         steps: ['babel-polyfill', './src/steps.js'],
-        createRecipe: ['babel-polyfill', './src/createRecipe.js']
+        createRecipe: ['babel-polyfill', './src/createRecipe.js'],
+        createStep: ['babel-polyfill', './src/createStep.js']
     },
     output: {
         path: path.resolve(__dirname, 'public/scripts'),

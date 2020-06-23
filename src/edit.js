@@ -22,8 +22,9 @@ removeElement.addEventListener('click', (e) => {
 })
 
 addStepsElement.addEventListener('click', (e) => {
-    const stepId = createSteps(recipeId)
-    location.assign(`/steps.html#${recipeId}?${stepId}`)
+    // const stepId = createSteps(recipeId)
+    // location.assign(`/steps.html#${recipeId}?${stepId}`)
+    location.assign(`/createStep.html#${recipeId}`)
 })
 
 window.addEventListener('storage', (e) => {
