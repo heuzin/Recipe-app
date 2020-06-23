@@ -9,5 +9,5 @@ createStepElement.addEventListener('submit', (e) => {
     // const stepId = createSteps(recipeId)
     // location.assign(`/steps.html#${recipeId}?${stepId}`)
     createSteps(recipeId)
-    location.assign('/index.html')
+    location.assign(`/edit.html#${recipeId}`)
 })
