@@ -23,12 +23,13 @@ const saveRecipes = () => {
 // Expose recipes from module
 const getRecipes = () => recipes
 
-const createRecipes = () => {
+const createRecipes = (e) => {
     const id = uuidv4()
+    const titleElemnt = document.querySelector('#add-recipe-from')
 
     recipes.push({
         id: id,
-        title: '',
+        title: titleElemnt.elements['recipe-title'].value,
         steps: [],
         ingridients: []
     })
@@ -65,11 +66,6 @@ const removeStep = (recipeId ,stepId) => {
     const recipe = recipes.find((recipe) => recipe.id === recipeId)
     let step = recipe.steps.find((step) => step.id === stepId)
     const stepIndex = recipe.steps.findIndex((step) => step.id === stepId)
-
-    console.log(stepId)
-    console.log(step)
-    console.log(stepIndex)
-
 
     if (stepIndex > -1) {
         recipe.steps.splice(stepIndex, 1)
