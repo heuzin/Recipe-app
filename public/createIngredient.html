@@ -2,7 +2,7 @@
 
 <html>
     <head>
-        <title>Edit Recipe</title>
+        <title>Create Ingredient</title>
     </head>
     <body>
         <div class="header">
@@ -18,12 +18,14 @@
         </div>
 
         <div class="container">
-            <input id="note-title" class="title-input" placeholder="Note Title">
-            <div id="steps"></div>
-            <button id="add-steps">Add Steps</button>
-            <button id="add-ingredents">Add Ingredients</button>
-            <button id="remove-recipe" class="button button--secondary">Delete Recipe</button>
+
+            <form id="add-ingredient-from">
+                <input type="text" id="recipe-ingredient" class="title-input" placeholder="Recipe Title">               
+                <button type="submit" id="add-recipe">Create Ingredient</button>
+            </form>
+
         </div>
 
-        <script src="/scripts/edit-bundle.js"></script>
+        <script src="/scripts/createIngredient-bundle.js"></script>
+    </body>
 </html>
