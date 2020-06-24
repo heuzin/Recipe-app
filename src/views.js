@@ -127,7 +127,7 @@ const initializeIngredientsPage = () => {
 
     const recipes = getRecipes()
     const recipe = recipes.find((recipe) => recipe.id === recipeId)
-    let ingredient = recipe.ingredient.find((ingredient) => ingredient.id === ingredientId)
+    let ingredient = recipe.ingredients.find((ingredient) => ingredient.id === ingredientId)
 
     ingredientElement.value = ingredient.ingredientName
 }

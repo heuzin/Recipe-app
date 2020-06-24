@@ -59,10 +59,12 @@ const createIngredient = (recipeId) => {
     const recipes = getRecipes()
     const recipe = recipes.filter((recipe) => recipe.id === recipeId)
     const id = uuidv4()
-    console.log(recipe)
+
+    const ingredientNameElement = document.querySelector('#add-ingredient-from')
+
     recipe[0].ingredients.push({
         id: id,
-        ingredientName: ''
+        ingredientName: ingredientNameElement.elements['recipe-ingredient'].value
     })
     saveRecipes()
 
@@ -86,6 +88,17 @@ const removeStep = (recipeId ,stepId) => {
 
     if (stepIndex > -1) {
         recipe.steps.splice(stepIndex, 1)
+        saveRecipes()
+    }
+}
+
+const removeIngredient = (recipeId, ingredientId) => {
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
+    let ingredients = recipe.ingredients.find((ingredient) => ingredient.id === ingredientId)
+    const ingredientIndex = recipe.ingredients.findIndex((ingredient) => ingredient.id === ingredientId)
+
+    if (ingredientIndex > -1) {
+        recipe.ingredients.splice(ingredientIndex, 1)
         saveRecipes()
     }
 }
@@ -114,11 +127,11 @@ const updateSteps = (recipeId, stepId, description) => {
 
 const updateIngredient = (recipeId, ingredientId, ingredientName) => {
     const recipe = recipes.find((recipe) => recipe.id === recipeId)
-    let ingredient = recipe.ingredient.find((ingredient) => ingredient.id === ingredientId)
+    let ingredient = recipe.ingredients.find((ingredient) => ingredient.id === ingredientId)
     ingredient.ingredientName = ingredientName
     saveRecipes()
 }
 
 recipes = loadRecipes()
 
-export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, createIngredient, removeRecipe, removeStep, updateRecipe, updateSteps, updateIngredient }
+export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, createIngredient, removeRecipe, removeStep, removeIngredient, updateRecipe, updateSteps, updateIngredient }

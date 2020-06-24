@@ -1,5 +1,5 @@
 import { initializeIngredientsPage } from './views'
-import { updateIngredient } from './recipes'
+import { updateIngredient, removeIngredient } from './recipes'
 
 initializeIngredientsPage()
 
@@ -15,6 +15,6 @@ ingredientElement.addEventListener('input', (e) => {
 })
 
 removeElement.addEventListener('click', (e) => {
-    removeStep(recipeId, ingredientId)
+    removeIngredient(recipeId, ingredientId)
     location.assign('/index.html')
 })
