@@ -59,7 +59,7 @@ const createIngredient = (recipeId) => {
     const recipes = getRecipes()
     const recipe = recipes.filter((recipe) => recipe.id === recipeId)
     const id = uuidv4()
-
+    console.log(recipe)
     recipe[0].ingredients.push({
         id: id,
         ingredientName: ''
@@ -112,6 +112,13 @@ const updateSteps = (recipeId, stepId, description) => {
     saveRecipes()
 }
 
+const updateIngredient = (recipeId, ingredientId, ingredientName) => {
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
+    let ingredient = recipe.ingredient.find((ingredient) => ingredient.id === ingredientId)
+    ingredient.ingredientName = ingredientName
+    saveRecipes()
+}
+
 recipes = loadRecipes()
 
-export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, createIngredient, removeRecipe, removeStep, updateRecipe, updateSteps }
+export { loadRecipes, saveRecipes, getRecipes, createRecipes, createSteps, createIngredient, removeRecipe, removeStep, updateRecipe, updateSteps, updateIngredient }

@@ -66,6 +66,32 @@ const renderSteps = () => {
     }
 }
 
+const renderIngredients = () => {
+    const ingredientsEl = document.querySelector('#ingredients')
+
+    const ids = location.hash.substring(1).split('?')
+    const recipeId =ids[0]
+    const stepId = ids[1]
+
+    const recipes = getRecipes()
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
+
+    ingredientsEl.innerHTML = ''
+
+    if (recipe.ingredients.length > 0) {
+        recipe.ingredients.forEach((ingredient) => {
+            const ingredientEl = document.createElement('a')
+            ingredientEl.textContent = ingredient.ingredientName
+            ingredientsEl.appendChild(ingredientEl)
+            ingredientEl.setAttribute('href', `/ingredients.html#${recipeId}?${ingredient.id}`)
+        })
+    } else {
+        const emptyMessage = document.createElement('p')
+        emptyMessage.textContent = 'No ingredient to show'
+        ingredientsEl.appendChild(emptyMessage)
+    }
+}
+
 const initializeEditPage = (recipeId) => {
     const titleElement = document.querySelector('#note-title')
     const recipes = getRecipes()
@@ -82,7 +108,7 @@ const initializePostPage = () => {
     const stepElement = document.querySelector('#recipe-steps')
 
     const ids = location.hash.substring(1).split('?')
-    const recipeId =ids[0]
+    const recipeId = ids[0]
     const stepId = ids[1]
 
     const recipes = getRecipes()
@@ -92,4 +118,18 @@ const initializePostPage = () => {
     stepElement.value = step.description
 }
 
-export { generateRecipeDom, renderRecipes, initializeEditPage, initializePostPage, renderSteps }
+const initializeIngredientsPage = () => {
+    const ingredientElement = document.querySelector('#recipe-ingredient')
+
+    const ids = location.hash.substring(1).split('?')
+    const recipeId = ids [0]
+    const ingredientId = ids[1]
+
+    const recipes = getRecipes()
+    const recipe = recipes.find((recipe) => recipe.id === recipeId)
+    let ingredient = recipe.ingredient.find((ingredient) => ingredient.id === ingredientId)
+
+    ingredientElement.value = ingredient.ingredientName
+}
+
+export { generateRecipeDom, renderRecipes, renderSteps, renderIngredients, initializeEditPage, initializePostPage, initializeIngredientsPage }
