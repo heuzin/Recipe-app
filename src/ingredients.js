@@ -16,5 +16,5 @@ ingredientElement.addEventListener('input', (e) => {
 
 removeElement.addEventListener('click', (e) => {
     removeIngredient(recipeId, ingredientId)
-    location.assign('/index.html')
+    location.assign(`/createIngredient.html#${recipeId}`)
 })

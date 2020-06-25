@@ -80,10 +80,16 @@ const renderIngredients = () => {
 
     if (recipe.ingredients.length > 0) {
         recipe.ingredients.forEach((ingredient) => {
-            const ingredientEl = document.createElement('a')
-            ingredientEl.textContent = ingredient.ingredientName
-            ingredientsEl.appendChild(ingredientEl)
-            ingredientEl.setAttribute('href', `/ingredients.html#${recipeId}?${ingredient.id}`)
+            const ingredientLabel = document.createElement('LABEL')
+            const ingredientEl = document.createElement('INPUT')
+            ingredientEl.setAttribute("type", "checkbox");
+            ingredientLabel.appendChild(ingredientEl)
+            ingredientLabel.appendChild(document.createTextNode(ingredient.ingredientName))
+
+
+            // ingredientEl.textContent = ingredient.ingredientName
+            ingredientsEl.appendChild(ingredientLabel)
+            // ingredientEl.setAttribute('href', `/ingredients.html#${recipeId}?${ingredient.id}`)
         })
     } else {
         const emptyMessage = document.createElement('p')
