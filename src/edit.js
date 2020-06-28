@@ -1,12 +1,13 @@
 import { initializeEditPage, renderSteps, renderIngredients } from "./views"
-import { updateRecipe, removeRecipe, createSteps } from "./recipes"
+import { updateRecipe, removeRecipe, createIngredient } from "./recipes"
 
 renderSteps()
+renderIngredients()
 
 const titleElement = document.querySelector('#note-title')
 const removeElement = document.querySelector('#remove-recipe')
 const addStepsElement = document.querySelector('#add-steps')
-const addIngredientsElement = document.querySelector('#add-ingredents')
+const createIngredientElement = document.querySelector('#add-ingredient-from')
 const recipeId = location.hash.substring(1)
 
 initializeEditPage(recipeId)
@@ -28,8 +29,10 @@ addStepsElement.addEventListener('click', (e) => {
     location.assign(`/createStep.html#${recipeId}`)
 })
 
-addIngredientsElement.addEventListener('click', (e) => {
-    location.assign(`/createIngredient.html#${recipeId}`)
+createIngredientElement.addEventListener('submit', (e) => {
+
+    createIngredient(recipeId)
+    location.assign(`/edit.html#${recipeId}`)
 })
 
 window.addEventListener('storage', (e) => {
@@ -37,3 +40,4 @@ window.addEventListener('storage', (e) => {
         initializeEditPage(recipeId)
     }
 })
+
