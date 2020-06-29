@@ -1,4 +1,4 @@
-import { getRecipes } from "./recipes"
+import { getRecipes, removeIngredient, removeRecipe } from "./recipes"
 import { getFilters } from "./filters"
 
 const generateRecipeDom = (recipe) => {
@@ -71,24 +71,39 @@ const renderIngredients = () => {
 
     const ids = location.hash.substring(1).split('?')
     const recipeId =ids[0]
-    const stepId = ids[1]
+    const ingredientId  = ids[1]
 
     const recipes = getRecipes()
     const recipe = recipes.find((recipe) => recipe.id === recipeId)
+
+    const ingredientIndex = recipe.ingredients.findIndex((ingredient) => ingredient.id === ingredientId)
+
 
     ingredientsEl.innerHTML = ''
 
     if (recipe.ingredients.length > 0) {
         recipe.ingredients.forEach((ingredient) => {
+            const ingridientDiv = document.createElement('div')
             const ingredientLabel = document.createElement('LABEL')
             const ingredientEl = document.createElement('INPUT')
+            const removeButton = document.createElement('button')
+
             ingredientEl.setAttribute("type", "checkbox");
             ingredientLabel.appendChild(ingredientEl)
             ingredientLabel.appendChild(document.createTextNode(ingredient.ingredientName))
+            ingridientDiv.appendChild(ingredientLabel)
 
+
+            removeButton.textContent = 'Remove'
+            ingridientDiv.appendChild(removeButton)
+            removeButton.addEventListener('click', (e) => {
+                e.preventDefault()
+                removeIngredient(recipeId, ingredient.id)
+                location.reload();
+            })
 
             // ingredientEl.textContent = ingredient.ingredientName
-            ingredientsEl.appendChild(ingredientLabel)
+            ingredientsEl.appendChild(ingridientDiv)
             // ingredientEl.setAttribute('href', `/ingredients.html#${recipeId}?${ingredient.id}`)
         })
     } else {
