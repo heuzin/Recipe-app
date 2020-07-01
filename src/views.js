@@ -53,9 +53,12 @@ const renderSteps = () => {
     
     if (recipe.steps.length > 0) {
         recipe.steps.forEach((step) => {        
+            const divEl = document.createElement('div')
             const stepEl = document.createElement('a')
             stepEl.textContent = `Step ${count}: ${step.description} `
-            stepsEl.appendChild(stepEl)
+
+            divEl.appendChild(stepEl)
+            stepsEl.appendChild(divEl)
             stepEl.setAttribute('href', `/steps.html#${recipeId}?${step.id}`)
             count++
         })
