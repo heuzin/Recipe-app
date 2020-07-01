@@ -24,12 +24,20 @@ const renderRecipes = () => {
     const recipes = getRecipes()
     const filteredRecipes = recipes.filter((recipe) => recipe.title.toLowerCase().includes(filters.searchText.toLowerCase()))
 
+    const incompleteIngredients = filteredRecipes.filter((recipe) => {
+        return !recipe.ingredients.hasIngredient
+    })
+
     recipesEl.innerHTML = ''
 
     if (filteredRecipes.length > 0) {
         filteredRecipes.forEach((recipe) => {
+            console.log(incompleteIngredients)
             const recipeEl = generateRecipeDom(recipe)
+            const summary = document.createElement('h2')
+            summary.textContent = `You have ${incompleteIngredients.length} ingredients left`
             recipesEl.appendChild(recipeEl)
+            recipesEl.appendChild(summary)
         })
     } else {
         const emptyMessage = document.createElement('p')
@@ -92,7 +100,16 @@ const renderIngredients = () => {
             const removeButton = document.createElement('button')
 
             ingredientEl.setAttribute("type", "checkbox");
+            ingredientEl.checked = ingredient.hasIngredient
             ingredientLabel.appendChild(ingredientEl)
+            ingredientEl.addEventListener('change', () => {
+                if (ingredientEl.checked){
+                    !ingredient.hasIngredient
+                } else {
+                    ingredient.hasIngredient
+                }
+            })
+            
             ingredientLabel.appendChild(document.createTextNode(ingredient.ingredientName))
             ingridientDiv.appendChild(ingredientLabel)
 

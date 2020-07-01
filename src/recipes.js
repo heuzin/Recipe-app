@@ -64,6 +64,7 @@ const createIngredient = (recipeId) => {
 
     recipe[0].ingredients.push({
         id: id,
+        hasIngredient: false,
         ingredientName: ingredientNameElement.elements['recipe-ingredient'].value
     })
     saveRecipes()
